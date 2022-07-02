@@ -1,0 +1,242 @@
+{% extends "base.html" %}
+
+{% block title %}
+Programmé pour afficher une liste
+{% endblock title %}
+
+{% block content %}
+<script defer src="https://use.fontawesome.com/releases/v5.15.4/js/all.js" integrity="sha384-rOA1PnstxnOBLzCLMcre8ybwbTmemjzdNlILg8O7z1lUkLXozs4DHonlDtnE7fpc" crossorigin="anonymous"></script>
+<!-- CSS of my form -->
+<style>
+    h1{
+        text-align:center;
+    }
+    form{
+        min-width:1100px;
+        width: 100%;
+        border: 1px solid #F4F6F6 ;
+        padding: 50px 50px;
+        margin: 50px auto;
+        border-radius: 20px;
+        -webkit-box-shadow: 0px 1px 7px 5px rgba(0,0,0,0.2); 
+        box-shadow: 0px 1px 8px 5px rgba(0,0,0,0.1);
+    }
+    #imgFile{
+        display: flex;
+        justify-content: space-between;
+    }
+
+    #radioBouton, #Description{
+        display: flex;
+        justify-content: left;
+    }
+
+    #radioBouton div{
+        margin-left:50px;
+    }
+
+    #radioBouton label:first-child{
+        width:150px;
+    }
+    #Description label:first-child
+    {
+        width:300px;
+    }
+
+    #Description div
+    {
+        width:300px;
+    }
+
+    #imgFile_1 {
+        width: 45%;
+    }
+
+    #imgFile_2{
+        width: 45%;
+        flex-direction: column;
+    }
+
+    #imgFile_2 div{
+        display :flex;
+        justify-content:space-between;
+    }
+
+    .custom-file-input{
+        width : 0%;
+    }
+    .custom-file-label{
+        position: relative;
+        width : 100%;
+    }
+</style>
+<!-- HTML of my form -->
+
+
+<br>
+<h1>Gestion des Actifs Numériques</h1>
+
+<form method="post" action="./describe-image">
+    {% csrf_token %}
+
+    <div class="form-group" id="imgFile" style="-">
+        <div id="imgFile_1">
+            <label for="exampleInputEmail1">Titre de l'image</label>
+            <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter un titre">
+        </div>
+        <div class="input-group mb-3" id="imgFile_2">
+            <label for="exampleInputEmail1">Fichier de l'image</label>
+            <div>
+                <input type="file" class="form-control" id="customFile" />
+            </div>
+        </div>
+    </div>
+
+    <div class="form-group" id="imgFile">
+        <label for="exampleInputEmail1">Type de photo :</label>
+        <div class="form-check">
+            <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+            <label class="form-check-label" for="flexCheckDefault">
+              Tag 1
+            </label>
+        </div>
+        <div class="form-check">
+            <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+            <label class="form-check-label" for="flexCheckDefault">
+                Tag 2
+            </label>
+        </div>
+        <div class="form-check">
+            <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+            <label class="form-check-label" for="flexCheckDefault">
+                Tag 3
+            </label>
+        </div>
+    </div>
+
+    <div class="form-group" id="radioBouton">
+        <label for="exampleInputEmail1">Photo avec produit :</label>
+        <div class="form-check">
+            <input class="form-check-input" type="radio" name="flexProduit" id="flexRadioDefault1">
+            <label class="form-check-label" for="flexRadioDefault1">
+              Oui
+            </label>
+          </div>
+          <div class="form-check">
+            <input class="form-check-input" type="radio" name="flexProduit" id="flexRadioDefault2" >
+            <label class="form-check-label" for="flexRadioDefault2">
+              Non
+            </label>
+          </div>
+          <div style="display:flex;" >
+            <label style="width:100px;" for="exampleInputEmail1">Précision :</label>
+            <input style="width:180px;" type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Variété du fruit, espèce de l’animal, volaille">
+            
+        </div>
+    </div>
+    
+    <div class="form-group" id="radioBouton">
+        <label for="exampleInputEmail1">Photo avec humain :</label>
+        <div class="form-check">
+            <input class="form-check-input" type="radio" name="flexHumain" id="flexRadioDefault1">
+            <label class="form-check-label" for="flexRadioDefault1">
+              Oui
+            </label>
+          </div>
+          <div class="form-check">
+            <input class="form-check-input" type="radio" name="flexHumain" id="flexRadioDefault2" >
+            <label class="form-check-label" for="flexRadioDefault2">
+              Non
+            </label>
+          </div>
+          <div style="display:flex;" >
+            <label style="width:100px;" for="exampleInputEmail1">Typologie :</label>
+            <input style="width:180px;" type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Chef, conseiller culinaire, adulte, enfant, client...">
+            
+        </div>
+        <div style="display:flex;" >
+            <label style="width:100px;" for="exampleInputEmail1">Action :</label>
+            <input style="width:180px;" type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Montage, dressage, …">
+            
+        </div>
+    </div>
+
+    <div class="form-group" id="radioBouton">
+        <label for="exampleInputEmail1">Photo avec logo  :</label>
+        <div class="form-check">
+            <input class="form-check-input" type="radio" name="flexlogo" id="flexRadioDefault1">
+            <label class="form-check-label" for="flexRadioDefault1">
+                Oui
+            </label>
+          </div>
+          <div class="form-check">
+            <input class="form-check-input" type="radio" name="flexlogo" id="flexRadioDefault2" >
+            <label class="form-check-label" for="flexRadioDefault2">
+                Non
+            </label>
+          </div>
+          
+    </div>
+
+    <div class="form-group" id="Description">
+        <label for="exampleInputEmail1">Description de l’environnement extérieur  :</label>
+        <div class="form-check">
+            <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Plein air, cave, cuisine, champ...">
+        </div>  
+    </div>
+
+    <div class="form-group" id="Description">
+        <label style="width:100px;"for="exampleInputEmail1">Cibles clients  :</label>
+        <div class="form-check">
+            <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Traiteur, fast food, finger food, brasserie…">
+        </div>  
+    </div>
+
+    <div class="form-group" id="radioBouton">
+        <label for="exampleInputEmail1">Format de la photo :</label>
+        <div class="form-check">
+            <input class="form-check-input" type="radio" name="flexFormat" id="flexRadioDefault1">
+            <label class="form-check-label" for="flexRadioDefault1">
+                Vertical
+            </label>
+          </div>
+          <div class="form-check">
+            <input class="form-check-input" type="radio" name="flexFormat" id="flexRadioDefault2" >
+            <label class="form-check-label" for="flexRadioDefault2">
+                Horizontal
+            </label>
+        </div>
+        <div style="display:flex;" >
+            <label style="width:100px;" for="exampleInputEmail1">Précision :</label>
+            <input style="width:180px;" type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Vue d’avion, …">
+            
+        </div>
+    </div>
+
+    <div class="form-group" id="Description">
+        <label style="width:250px;"for="exampleInputEmail1">Saisie libre non normé :</label>
+        
+        <textarea  class="form-control" placeholder="Autres ..." id="exampleFormControlTextarea1" rows="3"></textarea>
+          
+    </div>
+
+    <button type="submit" class="btn btn-primary">Envoyer</button>
+    <!--
+    <div class="form-group">
+        <label for="exampleInputEmail1">Email address</label>
+        <input type="email" class="form-control" name="email" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
+        <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+    </div>
+    <div class="form-group">
+        <label for="exampleInputPassword1">Password</label>
+        <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+    </div>
+    <div class="form-check">
+        <input type="checkbox" class="form-check-input" id="exampleCheck1">
+        <label class="form-check-label" for="exampleCheck1">Check me out</label>
+    </div>
+    
+
+    -->
+</form>
+{% endblock content %}
