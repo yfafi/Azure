@@ -9,7 +9,9 @@ https://docs.djangoproject.com/en/4.0/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/4.0/ref/settings/
 """
+# USER: azureuser mdp: projetazure123!
 
+#Server=tcp:mysqlserver-azure.database.windows.net,1433;Initial Catalog=mySampleDatabase;Persist Security Info=False;User ID=azureuser;Password={your_password};MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;
 from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -75,10 +77,24 @@ WSGI_APPLICATION = 'webapp.wsgi.application'
 # https://docs.djangoproject.com/en/4.0/ref/settings/#databases
 
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+    
+    'default' : { 
+         'ENGINE' : 'myResourceGroup', 
+         'NAME' : '<mysqlserver-azure.database.windows.net>', 
+         'USER' : '<azureuser>', 
+         'PASSWORD' : '{projetazure123!}', 
+         'HOST ' : '<ServerName>', 
+         'PORT' : '<ServerPort>', 
+         'OPTIONS' : { 
+             'driver' : 'ODBC Driver 13 for SQL Server', 
+             'MARS_Connection' : 'True', 
+         } 
     }
+    
+    #'default': {
+        #'ENGINE': 'django.db.backends.sqlite3',
+        #'NAME': BASE_DIR / 'db.sqlite3',
+    #}
 }
 
 
