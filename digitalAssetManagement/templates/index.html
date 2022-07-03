@@ -79,15 +79,15 @@ Programmé pour afficher une liste
 <form method="post" action="./describe-image">
     {% csrf_token %}
 
-    <div class="form-group" id="imgFile" style="-">
+    <div class="form-group" id="imgFile">
         <div id="imgFile_1">
             <label for="exampleInputEmail1">Titre de l'image</label>
-            <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter un titre">
+            <input type="text" class="form-control" name="titreImg" value="" placeholder="Enter un titre">
         </div>
         <div class="input-group mb-3" id="imgFile_2">
             <label for="exampleInputEmail1">Fichier de l'image</label>
             <div>
-                <input type="file" class="form-control" id="customFile" />
+                <input type="file" name="fileImg" class="form-control" id="customFile" />
             </div>
         </div>
     </div>
@@ -95,19 +95,19 @@ Programmé pour afficher une liste
     <div class="form-group" id="imgFile">
         <label for="exampleInputEmail1">Type de photo :</label>
         <div class="form-check">
-            <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+            <input class="form-check-input" name="tag" type="checkbox" value="Tag 3" id="flexCheckDefault">
             <label class="form-check-label" for="flexCheckDefault">
               Tag 1
             </label>
         </div>
         <div class="form-check">
-            <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+            <input class="form-check-input" name="tag" type="checkbox" value="Tag 2" id="flexCheckDefault">
             <label class="form-check-label" for="flexCheckDefault">
                 Tag 2
             </label>
         </div>
         <div class="form-check">
-            <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+            <input class="form-check-input" name="tag" type="checkbox" value="Tag 3" id="flexCheckDefault">
             <label class="form-check-label" for="flexCheckDefault">
                 Tag 3
             </label>
@@ -117,20 +117,20 @@ Programmé pour afficher une liste
     <div class="form-group" id="radioBouton">
         <label for="exampleInputEmail1">Photo avec produit :</label>
         <div class="form-check">
-            <input class="form-check-input" type="radio" name="flexProduit" id="flexRadioDefault1">
+            <input class="form-check-input" type="radio" name="flexProduit" value="oui" id="flexRadioDefault1">
             <label class="form-check-label" for="flexRadioDefault1">
               Oui
             </label>
           </div>
           <div class="form-check">
-            <input class="form-check-input" type="radio" name="flexProduit" id="flexRadioDefault2" >
+            <input class="form-check-input" type="radio" name="flexProduit" value="non"  id="flexRadioDefault2" >
             <label class="form-check-label" for="flexRadioDefault2">
               Non
             </label>
           </div>
           <div style="display:flex;" >
             <label style="width:100px;" for="exampleInputEmail1">Précision :</label>
-            <input style="width:180px;" type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Variété du fruit, espèce de l’animal, volaille">
+            <input style="width:180px;" name="precisionProduit" type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Variété du fruit, espèce de l’animal, volaille">
             
         </div>
     </div>
@@ -151,13 +151,12 @@ Programmé pour afficher une liste
           </div>
           <div style="display:flex;" >
             <label style="width:100px;" for="exampleInputEmail1">Typologie :</label>
-            <input style="width:180px;" type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Chef, conseiller culinaire, adulte, enfant, client...">
+            <input style="width:180px;" name="typologie" type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Chef, conseiller culinaire, adulte, enfant, client...">
             
         </div>
         <div style="display:flex;" >
             <label style="width:100px;" for="exampleInputEmail1">Action :</label>
-            <input style="width:180px;" type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Montage, dressage, …">
-            
+            <input style="width:180px;" type="text" name="action" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Montage, dressage, …"> 
         </div>
     </div>
 
@@ -181,14 +180,14 @@ Programmé pour afficher une liste
     <div class="form-group" id="Description">
         <label for="exampleInputEmail1">Description de l’environnement extérieur  :</label>
         <div class="form-check">
-            <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Plein air, cave, cuisine, champ...">
+            <input type="text" name="DescriptionExt" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Plein air, cave, cuisine, champ...">
         </div>  
     </div>
 
     <div class="form-group" id="Description">
         <label style="width:100px;"for="exampleInputEmail1">Cibles clients  :</label>
         <div class="form-check">
-            <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Traiteur, fast food, finger food, brasserie…">
+            <input type="text" class="form-control" name="Cibles" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Traiteur, fast food, finger food, brasserie…">
         </div>  
     </div>
 
@@ -208,7 +207,7 @@ Programmé pour afficher une liste
         </div>
         <div style="display:flex;" >
             <label style="width:100px;" for="exampleInputEmail1">Précision :</label>
-            <input style="width:180px;" type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Vue d’avion, …">
+            <input style="width:180px;" type="text" name="precisionFormat" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Vue d’avion, …">
             
         </div>
     </div>
@@ -216,7 +215,7 @@ Programmé pour afficher une liste
     <div class="form-group" id="Description">
         <label style="width:250px;"for="exampleInputEmail1">Saisie libre non normé :</label>
         
-        <textarea  class="form-control" placeholder="Autres ..." id="exampleFormControlTextarea1" rows="3"></textarea>
+        <textarea  class="form-control" name="precisionFormat" placeholder="Autres ..." id="exampleFormControlTextarea1" rows="3"></textarea>
           
     </div>
 
