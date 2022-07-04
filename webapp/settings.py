@@ -78,23 +78,10 @@ WSGI_APPLICATION = 'webapp.wsgi.application'
 
 DATABASES = {
     
-    'default' : { 
-         'ENGINE' : 'myResourceGroup', 
-         'NAME' : '<mysqlserver-azure.database.windows.net>', 
-         'USER' : '<azureuser>', 
-         'PASSWORD' : '{projetazure123!}', 
-         'HOST ' : '<ServerName>', 
-         'PORT' : '<ServerPort>', 
-         'OPTIONS' : { 
-             'driver' : 'ODBC Driver 13 for SQL Server', 
-             'MARS_Connection' : 'True', 
-         } 
+    'default': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / 'db.sqlite3',
     }
-    
-    #'default': {
-        #'ENGINE': 'django.db.backends.sqlite3',
-        #'NAME': BASE_DIR / 'db.sqlite3',
-    #}
 }
 
 
